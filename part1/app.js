@@ -11,7 +11,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-let db;
+let db= await mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: '',
+      database: 'testdb'
+    });;
 
 (async () => {
   try {
