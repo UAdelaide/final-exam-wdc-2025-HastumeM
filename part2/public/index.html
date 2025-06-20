@@ -44,7 +44,7 @@
               headers: {
                 'Content-Type': 'application/json'
               },
-              body: JSON.stringify({ email: this.email, password: this.password })
+              body: JSON.stringify({ username: this.email, password: this.password })
             });
             const data = await res.json();
             if (!res.ok)  throw new Error(data.error || 'login fail');
