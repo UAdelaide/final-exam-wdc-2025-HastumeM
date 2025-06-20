@@ -38,7 +38,8 @@
 
   <script>
     const { createApp, ref, onMounted } = Vue;
-    
+    const res = await fetch('/api/users/me');
+    if (!res.ok) 
 
     createApp({
       setup() {
