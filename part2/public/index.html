@@ -38,7 +38,9 @@
       },
       methods: {
         async login() {
-          try {}
+          try {
+            const res = await fetch('/api/user')
+          }
         }
       }
     }).mount('#app');
