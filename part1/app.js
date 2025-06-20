@@ -58,7 +58,7 @@ app.get('/api/walkrequests/open', async (req, res) => {
 
 app.get('/api/walkers/summary', async (req, res) => {
   try {
-    const [walkers] = await db.execute(`SELECT u.username AS walker_username, COUNT(DISTINCT wr.rating_id) AS total_ratings, AVG(wr.rating) AS average_rating, (SELECT COUNT())`);
+    const [walkers] = await db.execute(`SELECT u.username AS walker_username, COUNT(DISTINCT wr.rating_id) AS total_ratings, AVG(wr.rating) AS average_rating, (SELECT COUNT(*) FROM WalkRequests wq)`);
     res.json(walkers);
   } catch (err) {
     res.status(500).json({ error: 'Failed to walker summary' });
