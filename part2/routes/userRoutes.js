@@ -55,4 +55,10 @@ router.post('/login', async (req, res) => {
   }
 });
 
+router.get('/login', (req, res) => {
+  const message = req.session.message || null;
+  req.session.message = null;
+  res.render('login', { message });
+});
+
 module.exports = router;
