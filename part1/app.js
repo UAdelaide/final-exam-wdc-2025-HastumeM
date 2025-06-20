@@ -58,7 +58,7 @@ app.get('/api/walkrequests/open', async (req, res) => {
 
 app.get('/api/walkers/summary', async (req, res) => {
   try {
-    const [walkers] = await db.execute(`SELECT u.username AS walker_username, COUNT(DISTINCT wr.rating_id) AS total_ratings, AVG(wr.rating) AS average_rating, (SELECT COUNT(*) FROM WalkRequests wq WHERE wq.status = 'completed' AND EXISTS (SELECT 1 FROM WalkApplications wa WHERE wa.request_id = sq.request_is AND wa.walker_id = u.user_id AND wa.status = 'accepted') AS completed_walks )`);
+    const [walkers] = await db.execute(`SELECT u.username AS walker_username, COUNT(DISTINCT wr.rating_id) AS total_ratings, AVG(wr.rating) AS average_rating, (SELECT COUNT(*) FROM WalkRequests wq WHERE wq.status = 'completed' AND EXISTS (SELECT 1 FROM WalkApplications wa WHERE wa.request_id = sq.request_is AND wa.walker_id = u.user_id AND wa.status = 'accepted') AS completed_walks From Users u LEFT JOIN WalkRatings wr ON wr.walker_id)`);
     res.json(walkers);
   } catch (err) {
     res.status(500).json({ error: 'Failed to walker summary' });
