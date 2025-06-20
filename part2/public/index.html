@@ -50,7 +50,10 @@
             if (!res.ok) { throw new Error(data.error || 'login fail');
             if (data.user.role === 'owner') {
               window.location.href = 'owner-dashboard.html';
-             }
+             } else if (data.user.role === 'walker') {
+              window.location.href = 'walker-dashboard.html';
+            } else {
+              alert()
           }
         }
       }
