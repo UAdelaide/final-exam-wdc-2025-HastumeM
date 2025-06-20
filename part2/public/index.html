@@ -47,8 +47,9 @@
               body: JSON.stringify({ email: this.email, password: this.password })
             });
             const data = await res.json();
-            if (res.ok) { throw new Error(data.error || 'login fail');
-              
+            if (!res.ok) { throw new Error(data.error || 'login fail');
+            if (data.user.role === 'owner') {
+              window.location.href = 'owner-dashboard.html';
              }
           }
         }
