@@ -80,7 +80,8 @@
           }
         },
         async loadDogs() {
-          const res
+          const res = await fetch('/api/dogs');
+          const dog
         }
       }
     }).mount('#app');
