@@ -34,7 +34,7 @@
         <th>photo</th>
       </tr>
       <tr v-for="(dog,i) in dogs" :key="i">
-        <td>{{dog.dog_id </td>
+        <td>{{dog.dog_id || i+1}}</td>
         <th>Anniy</th>
         <th>medium</th>
       </tr>
