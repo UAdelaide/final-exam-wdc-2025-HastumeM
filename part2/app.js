@@ -4,6 +4,8 @@ require('dotenv').config();
 
 const app = express();
 
+const db = require
+
 const session = require('express-session');
 app.use(session({
     secret: 'dogsecret',
