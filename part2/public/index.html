@@ -88,8 +88,10 @@
               const data = await resp.json();
               dog.photo=data.message;
             } catch {
+              dog.photo='';
           }
         }
+        this.dog
       }
     }).mount('#app');
   </script>
