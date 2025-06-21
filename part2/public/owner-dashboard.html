@@ -106,7 +106,7 @@
             const res = await fetch('/api/dogs?owner=' + user.username);
             dog.value = await res.json();
           } catch {
-            error.value = [];
+            dog.value = [];
           }
         }
 
