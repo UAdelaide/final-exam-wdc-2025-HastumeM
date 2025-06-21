@@ -89,10 +89,10 @@
               dog.photo=data.message;
             } catch {
               dog.photo='';
+            }
           }
+          this.dogs=dogs;
         }
-        this.dogs=dogs;
-      }
       },
       mounted() {
         this.loadDogs();
