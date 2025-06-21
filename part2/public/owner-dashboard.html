@@ -102,8 +102,8 @@
         async function loadWalks() {
           try {
             const userRes = await fetch('/api/users/me');
-            const user = await userRes.;
-            const res = await fetch('/api/walks');
+            const user = await userRes.json();
+            const res = await fetch('/api/dogs?owner=' + user.u);
           } catch {
             error.value = [];
           }
