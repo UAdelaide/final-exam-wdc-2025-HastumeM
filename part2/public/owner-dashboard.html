@@ -84,7 +84,20 @@
         const error = ref('');
         const dogs = ref([]);
 
-        async function loadDogs()
+        async function loadDogs() {
+          const res = await fetch('/api/dogs');
+          const dogs= await res.json();
+          for (let dog of dogs) {
+            try {
+              const resp=await fetch('https://dog.ceo/api/breeds/image/random');
+              const data = await resp.json();
+              dog.photo=data.message;
+            } catch {
+              dog.photo='';
+            }
+          }
+          this.dogs=dogs;
+        }
 
         async function loadWalks() {
           try {
