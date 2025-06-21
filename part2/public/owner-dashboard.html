@@ -101,8 +101,8 @@
 
         async function loadWalks() {
           try {
-            const userRes = await fetch('/api/walks');
-            const res = await fetch('/api/walks');
+            const userRes = await fetch('/api/users/me');
+            const user = await userRes.;
             const res = await fetch('/api/walks');
           } catch {
             error.value = [];
