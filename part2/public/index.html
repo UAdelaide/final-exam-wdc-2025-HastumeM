@@ -94,7 +94,9 @@
         this.dogs=dogs;
       }
       },
-      mount
+      mounted() {
+        this.loadDogs();
+      }
     }).mount('#app');
   </script>
 
