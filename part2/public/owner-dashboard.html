@@ -89,9 +89,9 @@
             const userRes = await fetch('/api/users/me');
             const user = await userRes.json();
             const res = await fetch('/api/dogs?owner=' + user.username);
-            dog.value = await res.json();
+            dogs.value = await res.json();
           } catch {
-            dog.value = [];
+            dogs.value = [];
           }
         }
 
