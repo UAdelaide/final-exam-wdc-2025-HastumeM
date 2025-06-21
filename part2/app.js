@@ -28,7 +28,7 @@ app.use('/api/users', userRoutes);
 app.get('/api/dogs', async (req, res) => {
   try {
     if (req.query.owner) {
-        const [dogs] = await db.execute('SELECT dog_id, name FROM Dogs d JOIN Users u ON d.owner_id = u.user_id');
+        const [dogs] = await db.execute('SELECT dog_id, name FROM Dogs d JOIN Users u ON d.owner_id = u.user_id WHERE u.username = ?');
     }
     const [dogs] = await db.execute('SELECT d.name AS dog_name, d.size, u.username AS owner_username FROM Dogs d JOIN Users u ON d.owner_id = u.user_id');
     res.json(dogs);
